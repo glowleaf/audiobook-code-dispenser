@@ -93,7 +93,10 @@
                         Upload a CSV file named in format: <strong>promocodes-BookTitle-YYYY-MM-DD.csv</strong><br>
                         • If the book doesn't exist, it will be created automatically<br>
                         • If the book exists, the codes will be updated/added<br>
-                        • CSV format: Promo Code, Status, Marketplace, Generated On, Redemption Date, Shared
+                        • CSV format: "Promo Code","Status","Marketplace","Generated On","Redemption Date","Shared"<br>
+                        • Status: AVAILABLE, REDEEMED, or DISPENSED<br>
+                        • Marketplace: US or GB<br>
+                        • Date format: MM/DD/YY (e.g., 04/30/20)
                     </p>
                 </div>
                 

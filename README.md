@@ -32,19 +32,30 @@ A WordPress plugin for dispensing audiobook promotional codes from CSV uploads w
 ### CSV File Format
 
 Your CSV files should have the following columns:
-- **Promo Code**: The audiobook promotional code
+- **Promo Code**: The audiobook promotional code (e.g., "29RQ9B4U4EL7J")
 - **Status**: AVAILABLE, REDEEMED, or DISPENSED
 - **Marketplace**: US or GB
-- **Generated On**: Date the code was generated (optional)
-- **Redemption Date**: Date the code was redeemed (optional)
-- **Shared**: Whether the code has been shared (optional)
+- **Generated On**: Date the code was generated in MM/DD/YY format (e.g., "04/30/20")
+- **Redemption Date**: Date the code was redeemed in MM/DD/YY format (empty if not redeemed)
+- **Shared**: Whether the code has been shared ("true" or "false")
 
 Example CSV format:
 ```csv
 "Promo Code","Status","Marketplace","Generated On","Redemption Date","Shared"
-"ABC123DEF456","AVAILABLE","US","04/30/20","","false"
-"GHI789JKL012","AVAILABLE","GB","04/30/20","","false"
+"29RQ9B4U4EL7J","REDEEMED","GB","04/30/20","05/28/24","false"
+"2G8RWTHWWGPPD","AVAILABLE","GB","04/30/20","","false"
+"22ZRJTSTPQ5NK","REDEEMED","US","01/13/20","03/17/20","false"
 ```
+
+### File Naming Convention
+
+CSV files should be named in the format: `promocodes-BookTitle-YYYY-MM-DD.csv`
+
+Examples:
+- `promocodes-7 Deadly Roommates Mean Gods Book 1-2025-06-27.csv`
+- `promocodes-A Trillion Dollar Rock-2025-06-27.csv`
+
+The book title will be automatically extracted from the filename and spaces will replace hyphens.
 
 ## Usage
 
