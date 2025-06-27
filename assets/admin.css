@@ -1,0 +1,143 @@
+/* Admin Styles for Audiobook Code Dispenser */
+
+.acd-stats-section {
+    margin: 20px 0;
+}
+
+.acd-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.acd-stat-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.acd-stat-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #646970;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.acd-stat-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1d2327;
+    display: block;
+}
+
+.acd-books-section {
+    margin: 30px 0;
+}
+
+.acd-code-count.acd-no-codes {
+    color: #d63638;
+    font-weight: bold;
+}
+
+/* Modal Styles */
+.acd-modal {
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.acd-modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 0;
+    border-radius: 4px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.acd-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.acd-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.acd-modal-close {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #999;
+}
+
+.acd-modal-close:hover {
+    color: #000;
+}
+
+.acd-modal-body {
+    padding: 20px;
+}
+
+.acd-form-group {
+    margin-bottom: 20px;
+}
+
+.acd-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.acd-form-group select,
+.acd-form-group input[type="file"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.acd-form-actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.acd-form-actions .button {
+    margin-left: 10px;
+}
+
+.acd-shortcode-info {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.acd-shortcode-info h2 {
+    margin-top: 0;
+}
+
+.acd-shortcode-info code {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px 0;
+    font-family: Consolas, Monaco, monospace;
+} 
