@@ -26,8 +26,7 @@
     <div class="acd-books-section">
         <div class="acd-section-header">
             <h2>Manage Books & Codes</h2>
-            <button class="button button-primary" id="acd-add-book-btn">Add New Book</button>
-            <button class="button" id="acd-upload-csv-btn">Upload CSV with New Book</button>
+            <button class="button button-primary" id="acd-upload-csv-btn">Upload CSV File</button>
         </div>
         
         <table class="wp-list-table widefat fixed striped">
@@ -58,9 +57,6 @@
                     </td>
                     <td><?php echo $book->uk_dispensed; ?></td>
                     <td>
-                        <button class="button acd-upload-btn" data-book-id="<?php echo $book->id; ?>" data-book-title="<?php echo esc_attr($book->title); ?>">
-                            Upload More Codes
-                        </button>
                         <button class="button button-link-delete acd-delete-btn" data-book-id="<?php echo $book->id; ?>" data-book-title="<?php echo esc_attr($book->title); ?>">
                             Delete
                         </button>
@@ -72,34 +68,11 @@
     </div>
 </div>
 
-<!-- Add Book Modal -->
-<div id="acd-add-book-modal" class="acd-modal" style="display: none;">
-    <div class="acd-modal-content">
-        <div class="acd-modal-header">
-            <h3>Add New Book</h3>
-            <span class="acd-modal-close">&times;</span>
-        </div>
-        <div class="acd-modal-body">
-            <form id="acd-add-book-form">
-                <div class="acd-form-group">
-                    <label for="acd-new-book-title">Book Title:</label>
-                    <input type="text" id="acd-new-book-title" name="book_title" required placeholder="Enter book title">
-                </div>
-                
-                <div class="acd-form-actions">
-                    <button type="submit" class="button button-primary">Add Book</button>
-                    <button type="button" class="button acd-modal-cancel">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Upload CSV with New Book Modal -->
+<!-- Upload CSV Modal -->
 <div id="acd-csv-upload-modal" class="acd-modal" style="display: none;">
     <div class="acd-modal-content">
         <div class="acd-modal-header">
-            <h3>Upload CSV File (New Book)</h3>
+            <h3>Upload CSV File</h3>
             <span class="acd-modal-close">&times;</span>
         </div>
         <div class="acd-modal-body">
@@ -118,48 +91,14 @@
                     <input type="file" id="acd-csv-file-new" name="csv_file" accept=".csv" required>
                     <p class="description">
                         Upload a CSV file named in format: <strong>promocodes-BookTitle-YYYY-MM-DD.csv</strong><br>
-                        The book title will be automatically extracted from the filename.<br>
-                        CSV format: Promo Code, Status, Marketplace, Generated On, Redemption Date, Shared
+                        • If the book doesn't exist, it will be created automatically<br>
+                        • If the book exists, the codes will be updated/added<br>
+                        • CSV format: Promo Code, Status, Marketplace, Generated On, Redemption Date, Shared
                     </p>
                 </div>
                 
                 <div class="acd-form-actions">
                     <button type="submit" class="button button-primary">Upload CSV</button>
-                    <button type="button" class="button acd-modal-cancel">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Upload More Codes Modal -->
-<div id="acd-upload-modal" class="acd-modal" style="display: none;">
-    <div class="acd-modal-content">
-        <div class="acd-modal-header">
-            <h3>Upload More Codes for: <span id="acd-modal-book-title"></span></h3>
-            <span class="acd-modal-close">&times;</span>
-        </div>
-        <div class="acd-modal-body">
-            <form id="acd-upload-form" enctype="multipart/form-data">
-                <input type="hidden" id="acd-book-id" name="book_id" value="">
-                
-                <div class="acd-form-group">
-                    <label for="acd-marketplace">Marketplace:</label>
-                    <select id="acd-marketplace" name="marketplace" required>
-                        <option value="">Select Marketplace</option>
-                        <option value="US">United States</option>
-                        <option value="GB">United Kingdom</option>
-                    </select>
-                </div>
-                
-                <div class="acd-form-group">
-                    <label for="acd-csv-file">CSV File:</label>
-                    <input type="file" id="acd-csv-file" name="csv_file" accept=".csv" required>
-                    <p class="description">Upload a CSV file with the format: Promo Code, Status, Marketplace, Generated On, Redemption Date, Shared</p>
-                </div>
-                
-                <div class="acd-form-actions">
-                    <button type="submit" class="button button-primary">Upload Codes</button>
                     <button type="button" class="button acd-modal-cancel">Cancel</button>
                 </div>
             </form>

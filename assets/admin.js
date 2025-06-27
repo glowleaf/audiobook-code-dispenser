@@ -2,24 +2,9 @@ jQuery(document).ready(function($) {
     // Load initial stats
     loadStats();
     
-    // Add book button click
-    $('#acd-add-book-btn').on('click', function() {
-        $('#acd-add-book-modal').show();
-    });
-    
-    // Upload CSV with new book button click
+    // Upload CSV button click
     $('#acd-upload-csv-btn').on('click', function() {
         $('#acd-csv-upload-modal').show();
-    });
-    
-    // Upload more codes button click
-    $('.acd-upload-btn').on('click', function() {
-        var bookId = $(this).data('book-id');
-        var bookTitle = $(this).data('book-title');
-        
-        $('#acd-book-id').val(bookId);
-        $('#acd-modal-book-title').text(bookTitle);
-        $('#acd-upload-modal').show();
     });
     
     // Close modal
@@ -40,39 +25,7 @@ jQuery(document).ready(function($) {
         }
     });
     
-    // Add book form submit
-    $('#acd-add-book-form').on('submit', function(e) {
-        e.preventDefault();
-        
-        $.ajax({
-            url: acd_ajax.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'acd_add_book',
-                book_title: $('#acd-new-book-title').val(),
-                nonce: acd_ajax.nonce
-            },
-            beforeSend: function() {
-                $('#acd-add-book-form button[type="submit"]').prop('disabled', true).text('Adding...');
-            },
-            success: function(response) {
-                if (response.success) {
-                    alert('Success: ' + response.data.message);
-                    location.reload();
-                } else {
-                    alert('Error: ' + response.data);
-                }
-            },
-            error: function() {
-                alert('An error occurred while adding the book.');
-            },
-            complete: function() {
-                $('#acd-add-book-form button[type="submit"]').prop('disabled', false).text('Add Book');
-            }
-        });
-    });
-    
-    // CSV upload with new book form submit
+    // CSV upload form submit
     $('#acd-csv-upload-form').on('submit', function(e) {
         e.preventDefault();
         
@@ -91,7 +44,11 @@ jQuery(document).ready(function($) {
             },
             success: function(response) {
                 if (response.success) {
-                    alert('Success: Book "' + response.data.book_title + '" created and ' + response.data.message);
+                    var message = 'Success: ' + response.data.message;
+                    if (response.data.book_title) {
+                        message = 'Success: Book "' + response.data.book_title + '" processed and ' + response.data.message;
+                    }
+                    alert(message);
                     location.reload();
                 } else {
                     alert('Error: ' + response.data);
@@ -102,40 +59,6 @@ jQuery(document).ready(function($) {
             },
             complete: function() {
                 $('#acd-csv-upload-form button[type="submit"]').prop('disabled', false).text('Upload CSV');
-            }
-        });
-    });
-    
-    // Upload more codes form submit
-    $('#acd-upload-form').on('submit', function(e) {
-        e.preventDefault();
-        
-        var formData = new FormData(this);
-        formData.append('action', 'acd_upload_csv');
-        formData.append('nonce', acd_ajax.nonce);
-        
-        $.ajax({
-            url: acd_ajax.ajax_url,
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            beforeSend: function() {
-                $('#acd-upload-form button[type="submit"]').prop('disabled', true).text('Uploading...');
-            },
-            success: function(response) {
-                if (response.success) {
-                    alert('Success: ' + response.data.message);
-                    location.reload();
-                } else {
-                    alert('Error: ' + response.data);
-                }
-            },
-            error: function() {
-                alert('An error occurred during upload.');
-            },
-            complete: function() {
-                $('#acd-upload-form button[type="submit"]').prop('disabled', false).text('Upload Codes');
             }
         });
     });
